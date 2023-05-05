@@ -1,7 +1,7 @@
 
-## DCL Audius Player
+## DCL L2 NFT Frame
 
-This project allows you to integrate the Audius decentralized music platform into your Decentraland scene!
+This project allows you to integrate an NFT Frame with L2 nfts into decentraland.
 
 ## Install
 
