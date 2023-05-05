@@ -1,3 +1,4 @@
+
 ## DCL Audius Player
 
 This project allows you to integrate the Audius decentralized music platform into your Decentraland scene!
@@ -9,107 +10,35 @@ To use any of the helpers provided by this library:
 1. Install it as an npm package. Run this command in your scene's project folder:
 
    ```
-   npm install dcl-audius-player
+   npm install dcl-l2-frame
+   ```
+   
+   ```
+   npm i @dcl/l2-scene-utils eth-connect decentraland-transactions -B
    ```
 
 2. Add this line at the start of your game.ts file, or any other TypeScript files that require it:
 
    ```typescript
-   import { APPlayingNewTrack, APStoppedTrack, AudiusPlayer, AudiusPlaylistType, AudiusUIType } from "dcl-audius-player";'
+   import { l2NFTFrame } from "dcl-l2-frame";
    ```
 
 ## Usage
 
 ### Basic Audius Player Integration
 
-The DCL Audius Library requires a few arguments when being constructed:
-
-- `playlistName`: String for the Audius Playlist to play
-- `order`: Either AudiusPlaylistType.ORDER or AudiusPlaylistType.SHUFFLE
-- `uiType`: Either AudiusUIType.CORNER or AudiusUIType.NONE
-- `autoStart`: Boolean to auto start the playlist on scene load
-- `loop`: Boolean to loop the playlist once it's finished
-- `volume`: Set the volume of the audio stream
-
-This example uses MyAmazingComponent to do `< insert use case >` to an entity over a period of 2 seconds:
-
-```typescript
-import { APPlayingNewTrack, APStoppedTrack, AudiusPlayer, AudiusPlaylistType, AudiusUIType } from "dcl-audius-player";'
-
-AudiusPlayer.init(
-  'angzaar', //playlist name
-  AudiusPlaylistType.ORDER, //playlist type - order, shuffle
-  AudiusUIType.NONE, //ui type - top, corner
-  false, //auto start
-  true, //loop
-  .5) //volume
-```
-
-### Audius Player Events
-
-There are a couple out of the box Event Listeners with the Audius Player
-
-- **APPlayingNewTrack** - playing a new track
-- **APStoppedTrack** - stopped playing a track
-- **APFinishedPlaylist** - finished a playlist
-
-Create event listeners below:
-
-```typescript
-AudiusPlayer.events.addListener(APPlayingNewTrack, null, (info)=>{
-  log('new track info is', info)
-})
-
-AudiusPlayer.events.addListener(APStoppedTrack, null, (info)=>{
-  log('stopped track', info)
-})
-```
-
-### Audius Player Functions
-Once your Audius Player is initialized, you can peform several functions within the player:
-
-#### Toggle playing ####
-SHIFT + F
-
-#### Play Next Song ####
-SHIFT + E
-
-#### Change Playlist ####
-```typescript
-AudiusPlayer.changePlaylist('new name')
-```
+The L2 frame requires the following parameters:
+- `ui`: boolean to add an on click event to the NFT Frame
+- `nft type`: 721 or 1155 token standard
+- `contract`: nft contract address
+- `tokenId`: nft token id
+- `transform`:TransformConstructorArgs for positioning in DCL world
+- `color`: `optional` Color4 parameter for the NFT Frame bg color
+- `frame`: `optional` `PictureFrameStyle` to style the NFT Frame
 
 
-#### Get Current Playing Track ####
-```typescript
-AudiusPlayer.currentlyPlaying()
-```
-
-#### Get Current Playlist Tracks ####
-```typescript
-AudiusPlayer.getPlaylist()
-```
-
-#### Change Volume ####
-```typescript
-AudiusPlayer.updateVolume(.5)
-```
-
-#### Play ####
-```typescript
-AudiusPlayer.play()
-```
-
-#### Play Specific Track ####
-```typescript
-AudiusPlayer.playSong(2) //index of the track to play
-```
-
-#### Stop ####
-```typescript
-AudiusPlayer.stop()
-```
-
+   ```typescript
+   let  nft = l2NFTFrame(true,721, "0x73b2798d287b41e69a1fc34179a1517153ac5a5b", "69", {position:  new  Vector3(8,2,8), scale:  new  Vector3(2,2,1)}, Color3.Blue(), PictureFrameStyle.Baroque_Ornament)
 ...
 
 ## Copyright info
